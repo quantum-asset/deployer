@@ -17,14 +17,13 @@ int main(int argc, char *argv[])
 	int sleepTime = 100;
 	char *argsForNewProcess[] = {"node index.js", NULL};
 	//int amountOfDownloads =(argc>2)?atoi(argv[2]):128;
-	char *location = "/home/ubuntu/NODE_BOT_APP";
+	
 	int excecResponse = 0;
 	//	int isDaemon = (argc>4)?(atoi(argv[4])):0;
 	int status;
 	//	if(isDaemon){
 
-	if (becomeDaemon(0) != 0)
-		return -1;
+	//if (becomeDaemon(0) != 0)	return -1;
 
 	//se convirtió en daemon correctamente
 	// hacer fork
@@ -48,7 +47,7 @@ int main(int argc, char *argv[])
 			break; //child fall through
 		default:
 			//parent recieves the pid of child
-			system("* Echo 'Nuevo inicio del proceso con pid >> /quantum-logs/logs.txt");
+			system("sudo echo Nuevo inicio del proceso con pid >> /quantum-logs/logs.txt");
 			while (1)
 			{
 				//ckeck
@@ -59,11 +58,11 @@ int main(int argc, char *argv[])
 
 				if (WIFSIGNALED(status))
 				{
-					system("* Echo 'Error al terminar el proceso\n' >> /quantum-logs/logs.txt");
+					system("echo 'Error al terminar el proceso\n' >> /quantum-logs/logs.txt");
 				}
 				else if (WEXITSTATUS(status))
 				{
-					system("Echo '* Termino correcto del proceso\n' >> /quantum-logs/logs.txt");
+					system("echo '* Termino correcto del proceso\n' >> /quantum-logs/logs.txt");
 				}
 				break;
 			}
