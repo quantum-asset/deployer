@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <unistd.h>
+
 #include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -8,7 +8,7 @@
 #include "./daemonize-process/become_daemon.h"
 
 #include <sys/types.h>
-
+#include <unistd.h>
 #include <sys/wait.h>
 
 int main(int argc, char *argv[])
@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
 			break; //child fall through
 		default:
 			//parent recieves the pid of child
-			system("* Echo 'Nuevo inicio del proceso con pid " + child_server_pid + "\n' >> /quantum-logs/logs.txt");
+			system("* Echo 'Nuevo inicio del proceso con pid >> /quantum-logs/logs.txt");
 			while (1)
 			{
 				//ckeck
