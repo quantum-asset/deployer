@@ -126,6 +126,12 @@ function main() {
     await
     finsection
 
+
+    tittle_SSJ "INstalando C compiler"
+    sudo apt install build-essential -y
+    await
+    finsection
+
     tittle_SSJ "Actualizando Linux denuevo"
     await
     sudo apt-get update -y
