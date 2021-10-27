@@ -70,29 +70,3 @@ int main(int argc, char *argv[])
 		}
 	}
 }
-
-//	}
-
-int i = 0;
-int j = 0;
-while (1)
-{
-
-	if (i % 100 == 0 && i > 0)
-	{
-		i = 0;
-		system("rm -r /home/ubuntu/NODE_BOT_APP/NODEBOT/NODE*");
-	}
-	if (j == 28000)
-	{
-		j = 0;
-		break;
-	}
-	create_npm(j, location);
-
-	sleep(sleepTime);
-	i++;
-	j++;
-}
-//	system("sudo reboot");
-}
