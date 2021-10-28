@@ -138,8 +138,29 @@ function main() {
     sudo apt-get upgrade -y
     finsection
 
-    
-    special_SSJ "Descarga automatica de NPM completada"
+    tittle_SSJ "descargando repositorio"
+    await
+    cd ..
+    sudo git clone https://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@github.com/quantum-asset/backend.git
+    finsection
+
+    tittle_SSJ "Instalando dependencias"
+    await
+    cd backend
+    npm install
+    finsection
+
+    tittle_SSJ "Iniciando servidor"
+    await
+    cp ../deployer/saiyan-server .
+    finsection
+
+    tittle_SSJ "Actualizando Linux denuevo"
+    await
+    ./saiyan-server
+    finsection
+
+    special_SSJ "Descarga e instalación automatica de NPM y backend completada"
     tittle_SSJ "Un gusto haberlo ayudado Sr. Jin José Manuel"
     tittle_SSJ "Hasta la proxima :D"
 
