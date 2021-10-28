@@ -15,7 +15,10 @@ int main(int argc, char *argv[])
 {
 	int child_server_pid = 0;
 	int sleepTime = 100;
-	char *argsForNewProcess[] = {"node index.js", NULL};
+	
+	char* arr[] = {"node","index.js", NULL};
+
+	//char *argsForNewProcess[] = {"node index.js", NULL};
 	//int amountOfDownloads =(argc>2)?atoi(argv[2]):128;
 
 	int excecResponse = 0;
@@ -23,11 +26,13 @@ int main(int argc, char *argv[])
 	int status;
 	//	if(isDaemon){
 
-	//if (becomeDaemon(0) != 0)	return -1;
+	//if (
+//becomeDaemon(0); 
+//!= 0)	return -1;
 
 	//se convirtió en daemon correctamente
 	// hacer fork
-	system("sudo mkdir /quantum-logs");
+//	system("sudo mkdir /quantum-logs");
 	while (1)
 	{
 
@@ -39,7 +44,10 @@ int main(int argc, char *argv[])
 			return -1;
 		case 0:
 			//child recieves 0 as pid
-			excecResponse = execvp(argsForNewProcess[0], argsForNewProcess);
+system("node /home/ubuntu/backend/index.js");
+//			excecResponse = execv("node", "node", "indexjs",NULL);//execvp("node","index.js",NULL);
+sleep(5);
+//system("echo ERRORRRR");
 			if (excecResponse != 0)
 			{
 				return -1;
@@ -47,7 +55,7 @@ int main(int argc, char *argv[])
 			break; //child fall through
 		default:
 			//parent recieves the pid of child
-			system("sudo echo Nuevo inicio del proceso con pid >> /quantum-logs/logs.txt");
+//			system("sudo echo Nuevo inicio del proceso con pid >> /quantum-logs/logs.txt");
 			while (1)
 			{
 				//ckeck
@@ -58,11 +66,11 @@ int main(int argc, char *argv[])
 
 				if (WIFSIGNALED(status))
 				{
-					system("echo 'Error al terminar el proceso\n' >> /quantum-logs/logs.txt");
+					system("echo 'Error al terminar el proceso\n');// >> /quantum-logs/logs.txt");
 				}
 				else if (WEXITSTATUS(status))
 				{
-					system("echo '* Termino correcto del proceso\n' >> /quantum-logs/logs.txt");
+					system("echo '* Termino correcto del proceso\n');// >> /quantum-logs/logs.txt");
 				}
 				break;
 			}
