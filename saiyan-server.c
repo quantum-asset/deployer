@@ -40,31 +40,32 @@ printf("ERROR EN DAEMONIZION\n");
 int i=0;	
 while (1)
 	{
-i++;
-printf("INIT NUMERO %d\n",i);
-fflush(stdout);
+	i++;	
+	printf("INIT NUMERO %d\n",i);
+	fflush(stdout);
 
 		child_server_pid = fork();
 		switch (child_server_pid)
 		{
 		case -1:
-printf("ERROR EN FORK %d\n",i);
-fflush(stdout);
+			printf("ERROR EN FORK %d\n",i);
+			fflush(stdout);
 			//error
 			return -1;
 		case 0:
-printf("Se logro forj¿k===AAAA>>>> %d\n",i);
-fflush(stdout);	
-		//child recieves 0 as pid
-system("sudo node /home/ubuntu/backend/index.js");
-//			excecResponse = execv("node", "node", "indexjs",NULL);//execvp("node","index.js",NULL);
-//sleep(5);
-//system("echo ERRORRRR");
+			printf("Se logro forj¿k===AAAA>>>> %d\n",i);
+			fflush(stdout);	
+			//child recieves 0 as pid
+			system("sudo node /home/ubuntu/backend/index.js");
+			//excecResponse = execv("node", "node", "indexjs",NULL);//execvp("node","index.js",NULL);
+			//sleep(5);
+			//system("echo ERRORRRR");
 			//if (excecResponse != 0)
-		//	{
-		//		return -1;
+			//	{
+			//		return -1;
 			//}
-			break; //child fall through
+			//break; //child fall through
+			return 0;
 		default:
 			//parent recieves the pid of child
 //			system("sudo echo Nuevo inicio del proceso con pid >> /quantum-logs/logs.txt");
@@ -88,4 +89,5 @@ system("sudo node /home/ubuntu/backend/index.js");
 			//}
 		}
 	}
+return 0;
 }
