@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 printf("Iniciando servidor\n");
 fflush(stdout);	
 //if (
-//	becomeDaemon(0); 
+	becomeDaemon(0); 
 printf("ERROR EN DAEMONIZION\n");
 	fflush(stdout);
 //!= 0)	return -1;
