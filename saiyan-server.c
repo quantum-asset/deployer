@@ -26,38 +26,50 @@ int main(int argc, char *argv[])
 	int status;
 	//	if(isDaemon){
 
-	//if (
-//becomeDaemon(0); 
+printf("Iniciando servidor\n");
+fflush(stdout);	
+//if (
+//	becomeDaemon(0); 
+printf("ERROR EN DAEMONIZION\n");
+	fflush(stdout);
 //!= 0)	return -1;
 
 	//se convirtió en daemon correctamente
 	// hacer fork
 //	system("sudo mkdir /quantum-logs");
-	while (1)
+int i=0;	
+while (1)
 	{
+i++;
+printf("INIT NUMERO %d\n",i);
+fflush(stdout);
 
 		child_server_pid = fork();
 		switch (child_server_pid)
 		{
 		case -1:
+printf("ERROR EN FORK %d\n",i);
+fflush(stdout);
 			//error
 			return -1;
 		case 0:
-			//child recieves 0 as pid
-system("node /home/ubuntu/backend/index.js");
+printf("Se logro forj¿k===AAAA>>>> %d\n",i);
+fflush(stdout);	
+		//child recieves 0 as pid
+system("sudo node /home/ubuntu/backend/index.js");
 //			excecResponse = execv("node", "node", "indexjs",NULL);//execvp("node","index.js",NULL);
-sleep(5);
+//sleep(5);
 //system("echo ERRORRRR");
-			if (excecResponse != 0)
-			{
-				return -1;
-			}
+			//if (excecResponse != 0)
+		//	{
+		//		return -1;
+			//}
 			break; //child fall through
 		default:
 			//parent recieves the pid of child
 //			system("sudo echo Nuevo inicio del proceso con pid >> /quantum-logs/logs.txt");
-			while (1)
-			{
+			//|while (1)
+			//{
 				//ckeck
 				//waitpid
 				//break
@@ -66,14 +78,14 @@ sleep(5);
 
 				if (WIFSIGNALED(status))
 				{
-					system("echo 'Error al terminar el proceso\n');// >> /quantum-logs/logs.txt");
+					system("sudo echo 'Error al terminar el proceso\n' >> /home/ubuntu/quantum-logs/logs.txt");
 				}
 				else if (WEXITSTATUS(status))
 				{
-					system("echo '* Termino correcto del proceso\n');// >> /quantum-logs/logs.txt");
+					system("sudo echo '* Termino correcto del proceso\n' >> /home/ubuntu/quantum-logs/logs.txt");
 				}
 				break;
-			}
+			//}
 		}
 	}
 }
